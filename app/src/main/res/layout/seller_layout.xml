@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:background="@color/darkWhite"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="2dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_shop_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="start"
+            android:paddingStart="5dp"
+            android:text="shop:status"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_seller_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingEnd="5dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:text="shop keeper:name"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_seller_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_seller_name"
+            android:text="email address"
+            android:gravity="center"
+            android:textSize="18sp"
+            />
+        <TextView
+            android:id="@+id/tv_seller_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_seller_email"
+            android:text="phone number"
+            android:gravity="center"
+            android:textSize="18sp"
+            />
+        <TextView
+            android:id="@+id/tv_shop_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textStyle="italic"
+            android:layout_below="@id/tv_seller_phone"
+            android:text="shop address"
+            android:gravity="center"
+            android:textSize="18sp"
+            />
+        <RelativeLayout
+            android:id="@+id/relative_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_shop_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_press_here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="press here"
+                android:layout_centerVertical="true"
+                android:textColor="@color/lightGreen"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/img_press_here"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="-10dp"
+                android:layout_toEndOf="@+id/tv_press_here"
+                android:src="@drawable/forward" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

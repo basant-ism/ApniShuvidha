@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "648705824655",
+    "firebase_url": "https://apnishuvidha.firebaseio.com",
+    "project_id": "apnishuvidha",
+    "storage_bucket": "apnishuvidha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648705824655:android:e2eac941a38e487169ddfa",
+        "android_client_info": {
+          "package_name": "com.example.apnishuvidha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648705824655-udrrh7mb44rbgr632nieoo7qjl1p1cc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apnishuvidha",
+            "certificate_hash": "515f797d251d61ce365e8a85afa918095900133a"
+          }
+        },
+        {
+          "client_id": "648705824655-r6b24srdf1mka29rp6crhk8khlppusnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxH6t8lwjH_z3O7qbPisf_Hpk-Gi5w9SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648705824655-r6b24srdf1mka29rp6crhk8khlppusnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

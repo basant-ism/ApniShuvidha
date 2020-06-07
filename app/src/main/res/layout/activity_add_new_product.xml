@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="seller.AddNewProduct">
+
+    <ImageView
+        android:onClick="openGallery"
+        android:id="@+id/img_product"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/product" />
+    <EditText
+        android:id="@+id/et_product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/img_product"
+        android:inputType="text"
+        android:hint="product name"
+        android:paddingStart="5dp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/et_product_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/et_product_name"
+        android:hint="product price"
+        android:paddingStart="5dp"
+        android:inputType="number"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_product_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:inputType="text"
+        android:layout_below="@id/et_product_price"
+        android:hint="product description"
+        android:paddingStart="5dp"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:onClick="addProduct"
+        android:id="@+id/btn_add_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/et_product_description"
+        android:text="add product"/>
+
+</RelativeLayout>
+

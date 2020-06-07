@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_product"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bus" />
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_product"
+        android:layout_alignParentStart="true"
+        android:text="product name"
+        android:paddingStart="5dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_product"
+        android:layout_alignParentEnd="true"
+        android:text="product price"
+        android:paddingStart="5dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/tv_product_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_product_name"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="product description"
+        android:paddingStart="5dp"
+        android:textSize="18sp"
+        android:textStyle="italic"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

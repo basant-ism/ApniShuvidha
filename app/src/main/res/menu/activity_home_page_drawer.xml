@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/shop">
+        <menu>
+            <item
+                android:id="@+id/nav_clothes"
+                android:icon="@drawable/shop"
+                android:title="@string/clothes" />
+            <item
+                android:id="@+id/nav_medical_store"
+                android:icon="@drawable/medical_store"
+                android:title="@string/medical_store" />
+            <item
+                android:id="@+id/nav_general_store"
+                android:icon="@drawable/general_store"
+                android:title="@string/general_store" />
+        </menu>
+    </item>
+    <item android:title="importent services">
+     <menu>
+        <item
+            android:id="@+id/nav_taksi"
+            android:icon="@drawable/taksi"
+            android:title="@string/taksi" />
+        <item
+            android:id="@+id/nav_raj_mistri"
+            android:icon="@drawable/home"
+            android:title="@string/rajmistri" />
+        <item
+            android:id="@+id/nav_tent"
+            android:icon="@drawable/tent"
+            android:title="@string/tent" />
+     </menu>
+    </item>
+
+    <item android:title="important features">
+        <menu>
+            <item
+                android:id="@+id/nav_bus"
+                android:title="@string/bus"
+                android:icon="@drawable/bus"/>
+            <item
+                android:id="@+id/nav_train"
+                android:title="@string/train"
+                android:icon="@drawable/train"/>
+        </menu>
+    </item>
+    <item android:title="others">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/logout"
+                android:icon="@drawable/logout"/>
+        </menu>
+    </item>
+</menu>

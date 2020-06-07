@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">ApniShuvidha</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="main_hader">Provides services happly:)</string>
+    <string name="shop_keeper">Shop Keeper</string>
+    <string name="rajmistri">Rajmistri</string>
+    <string name="tent">Tent</string>
+    <string name="taksi">Taksi</string>
+    <string name="train">Train</string>
+    <string name="bus">Bus</string>
+    <string name="admin">admin</string>
+
+    <string name="app_tag_line">Welcome to apni shuvidha!</string>
+    <string name="title_activity_home_page">HomePage</string>
+
+    <string name="about">About Us</string>
+    <string name="contacts">Contacts</string>
+
+    <string name="shop">shopping</string>
+    <string name="clothes">Clothes</string>
+    <string name="general_store">General Store</string>
+    <string name="medical_store">Medical Store</string>
+    <string name="seller">Seller</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">logout</string>
+</resources>
