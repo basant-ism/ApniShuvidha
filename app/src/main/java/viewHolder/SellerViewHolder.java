@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apnishuvidha.R;
 
-public class ShopViewHolder extends RecyclerView.ViewHolder {
+public class SellerViewHolder extends RecyclerView.ViewHolder {
     public TextView tvSellerName,tvShopStatus,tvSellerEmail,tvSellerPhone,tvShopAddress;
     public ImageView imgPressHere;
 
-    public ShopViewHolder(@NonNull View itemView) {
+    public SellerViewHolder(@NonNull View itemView) {
         super(itemView);
         tvSellerEmail=itemView.findViewById(R.id.tv_seller_email);
         tvSellerName=itemView.findViewById(R.id.tv_seller_name);

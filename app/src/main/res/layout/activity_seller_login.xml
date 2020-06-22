@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_seller_email"
         android:layout_below="@+id/img_login"
-        android:inputType="textEmailAddress"
+        android:inputType="textAutoComplete"
         android:layout_marginTop="40dp"
         android:background="@drawable/new_input_button"
         android:hint="email address"

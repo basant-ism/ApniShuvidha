@@ -1,27 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:background="@drawable/background2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_main"
+    >
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/imageSlider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderAutoCycleEnabled="true"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#FFF"
+        app:sliderScrollTimeInSec="1"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        app:sliderStartAutoCycle="true" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_user_email"
+        android:layout_below="@+id/imageSlider"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/new_input_button"
+        android:hint="email address"
+        android:textSize="20sp"
+        android:paddingStart="10dp"
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/activity_main_drawer"
-        app:headerLayout="@layout/nav_header_main"/>
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_exist"
+        android:layout_below="@+id/et_user_email"
+        android:text="email address not exist..."
+        android:textSize="18sp"
+        android:textColor="@color/warningRed"
+        android:textStyle="italic"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_user_password"
+        android:layout_below="@+id/tv_exist"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        android:background="@drawable/new_input_button"
+        android:hint="password"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="10dp"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_wrong_password"
+        android:layout_below="@+id/et_user_password"
+        android:text="wrong password..."
+        android:textSize="18sp"
+        android:textColor="@color/warningRed"
+        android:textStyle="italic"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_user_login"
+        android:layout_below="@+id/tv_wrong_password"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="SignIn"
+        android:textSize="25sp"
+        android:onClick="signIn"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/buttons"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_forgot_password"
+        android:layout_below="@+id/btn_user_login"
+        android:onClick="resetPassword"
+        android:text="Forgot password...?"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        android:layout_marginEnd="25dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="end"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dont_have_account"
+         android:layout_alignParentBottom="true"
+        android:onClick="goRegisterActivity"
+        android:text="Don't have an account?"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        android:layout_marginEnd="25dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
+<!--    <include-->
+<!--        layout="@layout/app_bar_main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:menu="@menu/activity_main_drawer"-->
+<!--        app:headerLayout="@layout/nav_header_main"/>-->
 
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

@@ -27,15 +27,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import model.Prevlent;
-import model.Shop;
+import model.Seller;
 import users.ShopProducts;
-import viewHolder.ShopViewHolder;
+import viewHolder.SellerViewHolder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends Fragment {
-    FirebaseRecyclerAdapter<Shop, ShopViewHolder> adapter;
+    FirebaseRecyclerAdapter<Seller, SellerViewHolder> adapter;
     RecyclerView recyclerView;
 
     DatabaseReference mDataRef;
@@ -74,13 +74,13 @@ public class SearchFragment extends Fragment {
 
             Query query = mDataRef.child("sellers").orderByChild("sellerName").startAt(INPUT_NAME);
 
-            FirebaseRecyclerOptions<Shop> options = new FirebaseRecyclerOptions.Builder<Shop>()
-                    .setQuery(query, Shop.class)
+            FirebaseRecyclerOptions<Seller> options = new FirebaseRecyclerOptions.Builder<Seller>()
+                    .setQuery(query, Seller.class)
                     .build();
-            adapter = new FirebaseRecyclerAdapter<Shop, ShopViewHolder>(options) {
+            adapter = new FirebaseRecyclerAdapter<Seller, SellerViewHolder>(options) {
 
                 @Override
-                protected void onBindViewHolder(@NonNull ShopViewHolder holder, int position, @NonNull final Shop model) {
+                protected void onBindViewHolder(@NonNull SellerViewHolder holder, int position, @NonNull final Seller model) {
                     holder.setTvShopStatus(model.getShopStatus());
                     holder.setTvSellerName(model.getSellerName());
                     holder.setTvSellerEmail(model.getSellerEmail());
@@ -152,10 +152,10 @@ public class SearchFragment extends Fragment {
 
                 @NonNull
                 @Override
-                public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                public SellerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seller_layout, parent, false);
 
-                    return new ShopViewHolder(view);
+                    return new SellerViewHolder(view);
                 }
 
 

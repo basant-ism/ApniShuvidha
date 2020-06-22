@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.apnishuvidha">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="users.ShopProducts"></activity>
+        <activity
+            android:name="users.ShopToUserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name="users.SellerProduct" />
+        <activity android:name="users.SellerDetails"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="users.SubCategoryActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="seller.SellerCatagroy" />
+        <activity android:name="users.VerifyUserEmail" />
+        <activity android:name="users.ShopProducts" />
         <activity android:name="seller.SellerLoginActivity" />
         <activity android:name="seller.SellerHomePage" />
-        <activity android:name="seller.general_store.ShopKeeper" />
+
         <activity android:name="seller.AddNewProduct" />
         <activity android:name="seller.SellerRegisterActivity" />
         <activity
@@ -24,11 +36,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="users.VerifyPhoneNo" />
         <activity android:name="users.UserLogin" />
-        <activity android:name="users.UserRegistration" />
+        <activity
+            android:name="users.UserRegistration"
+            android:label="User regstration form" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="Welcome to login page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

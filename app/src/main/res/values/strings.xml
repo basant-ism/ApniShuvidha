@@ -37,4 +37,60 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">logout</string>
+
+    <string-array name="countryName">
+        <item>Choose your country</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+        <item>India</item>
+    </string-array>
+    <string-array name="stateName">
+        <item>Choose your state</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+        <item>Uttar pradesh</item>
+
+    </string-array>
+
+    <string-array name="cityName">
+        <item>Choose your city</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+        <item>ThanaBhawan</item>
+
+    </string-array>
+
 </resources>

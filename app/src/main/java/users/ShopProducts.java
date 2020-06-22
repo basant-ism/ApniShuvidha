@@ -20,9 +20,7 @@ import com.google.firebase.database.Query;
 
 import model.Prevlent;
 import model.Product;
-import model.Shop;
 import viewHolder.ProductViewHolder;
-import viewHolder.ShopViewHolder;
 
 public class ShopProducts extends AppCompatActivity {
     FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter;

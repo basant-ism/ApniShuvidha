@@ -7,6 +7,7 @@ public class Product
     String pdescription;
     String pimage;
     String sellerUid;
+    String ptype;
 
     public Product(String pname, String price, String pdescription, String pimage) {
         this.pname = pname;
@@ -16,6 +17,14 @@ public class Product
     }
 
     public Product() {
+    }
+
+    public String getPtype() {
+        return ptype;
+    }
+
+    public void setPtype(String ptype) {
+        this.ptype = ptype;
     }
 
     public String getPname() {

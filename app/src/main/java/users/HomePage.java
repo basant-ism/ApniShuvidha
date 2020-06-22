@@ -1,245 +1,261 @@
 package users;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apnishuvidha.BecomeSellerFragment;
 import com.example.apnishuvidha.MainActivity;
 import com.example.apnishuvidha.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import adapter.SliderAdapterExample;
+import decoration.SpacesItemDecoration;
+import model.Category;
 import model.Prevlent;
-import model.Shop;
-import users.frangment.SearchFragment;
-import users.frangment.SellerFragment;
-import viewHolder.ShopViewHolder;
+import model.Seller;
+import model.SliderItem;
+import model.User;
+import viewHolder.CategoryViewHolder;
+import viewHolder.SellerUserViewHolder;
+import viewHolder.VerticalViewHolder;
 
 
-public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawer;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
-    Fragment fragment;
+public class HomePage extends AppCompatActivity  implements
+        PopupMenu.OnMenuItemClickListener {
 
-    TextView tvUserName,tvUserPhone;
+//    FragmentManager fragmentManager;
+//    FragmentTransaction fragmentTransaction;
+//    Fragment fragment;
+
+    TextView tvUserName,tvUserEmail;
     ImageView imgUser;
 
-    SharedPreferences sp;
-
     DatabaseReference mDataRef;
+    RecyclerView sellerRecyclerView;
+
+    FirebaseAuth mAuth;
 
 
+    SearchView searchView;
 
-    Bundle bundle;
+
+    BottomNavigationView bottom_nav;
+    NavigationView navigationView;
+    DrawerLayout drawer;
+    NavController navController;
+    AppBarConfiguration appBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        bundle=new Bundle();
-
-        sp=getSharedPreferences("MyPreferance",MODE_PRIVATE);
+        mAuth=FirebaseAuth.getInstance();
+        mDataRef= FirebaseDatabase.getInstance().getReference();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        bottom_nav=findViewById(R.id.bottom_nev_view);
 
-        mDataRef= FirebaseDatabase.getInstance().getReference();
-
-
-
-
-        fragmentManager=getSupportFragmentManager();
-        fragmentTransaction=fragmentManager.beginTransaction();
-        fragment=new SellerFragment();
-        bundle.putString(Prevlent.catagory,Prevlent.CLOTHES);
-        fragment.setArguments(bundle);
-        fragmentTransaction.add(R.id.nav_host_fragment,fragment);
-        fragmentTransaction.commit();
-
-
+        navController=Navigation.findNavController(this,R.id.nav_host_fragment);
+        appBarConfiguration=new AppBarConfiguration.Builder(new int[]{R.id.home,R.id.notification,R.id.seller})
+                                                .setDrawerLayout(drawer)
+                                                .build();
+        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView,navController);
+        NavigationUI.setupWithNavController(bottom_nav,navController);
 
 
         tvUserName=navigationView.getHeaderView(0).findViewById(R.id.tv_user_name);
-        tvUserPhone=navigationView.getHeaderView(0).findViewById(R.id.tv_user_phone);
+        tvUserEmail=navigationView.getHeaderView(0).findViewById(R.id.tv_user_email);
         imgUser=navigationView.findViewById(R.id.img_user);
-
+        searchView=findViewById(R.id.search_bar);
+        searchView.setQueryHint("Search here");
 
         setUserData();
 
-        navigationView.setNavigationItemSelectedListener(this);
+       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+           @Override
+           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               switch (item.getItemId())
+               {
+                   case R.id.nav_cart:
+                       Toast.makeText(HomePage.this,"my cart list",Toast.LENGTH_LONG).show();
+                       break;
+                   case R.id.nav_setting:
+                       Toast.makeText(HomePage.this,"settings ",Toast.LENGTH_LONG).show();
+                       break;
+                   case R.id.nav_share:
+                       Toast.makeText(HomePage.this,"share",Toast.LENGTH_LONG).show();
+                       break;
+                   case R.id.nav_logout:
+                       mAuth.signOut();
+                Intent intent=new Intent(HomePage.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                       break;
+
+               }
+               drawer.closeDrawer(GravityCompat.START);
+               return true;
+           }
+       });
 
 
-        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,
-                R.string.navigation_drawer_open,R.string.navigation_drawer_open);
-        drawer.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+
+
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController,appBarConfiguration);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+
+
+    }
+
+
+
 
     private void setUserData()
     {
-      tvUserPhone.setText(Prevlent.currentUser.getPhone());
-      tvUserName.setText(Prevlent.currentUser.getName());
+        mDataRef.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(mAuth.getUid()).exists())
+                {
+                    User user=dataSnapshot.child(mAuth.getUid()).getValue(User.class);
+                    if(user.getUserImage()!=null)
+                        Picasso.get().load(user.getUserImage()).into(imgUser);
+                   tvUserName.setText(user.getUserName());
+                   tvUserEmail.setText(user.getUserEmail());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.home_page, menu);
-        MenuItem menuItem=menu.findItem(R.id.action_search);
-        final SearchView searchView=(SearchView) menuItem.getActionView();
-        searchView.setQueryHint("search here");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Log.v("TAG",query);
-                fragmentManager=getSupportFragmentManager();
-                fragmentTransaction=fragmentManager.beginTransaction();
-                fragment=new SearchFragment();
-                bundle.putString("INPUT_NAME",query);
-                fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-                fragmentTransaction.commit();
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Log.v("TAG",newText);
-                fragmentManager=getSupportFragmentManager();
-                fragmentTransaction=fragmentManager.beginTransaction();
-                fragment=new SearchFragment();
-                bundle.putString("INPUT_NAME",newText);
-                fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-                fragmentTransaction.commit();
-                return true;
-            }
-        });
-        menuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                searchView.clearFocus();
-                fragmentManager=getSupportFragmentManager();
-                fragmentTransaction=fragmentManager.beginTransaction();
-                fragment=new SellerFragment();
-                bundle.putString(Prevlent.catagory,Prevlent.CLOTHES);
-                fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-                fragmentTransaction.commit();
-                return true;
-            }
-        });
-
          return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        fragmentTransaction=fragmentManager.beginTransaction();
         switch (item.getItemId())
         {
-            case R.id.action_settings:
-               // fragment= new SettingFrangment();
+            case R.id.action_pop:
+                View view=findViewById(R.id.action_pop);
+                showPopUp(view);
                 break;
-            case R.id.action_contacts:
-               // fragment=new ContactFragment();
-                break;
-            case R.id.action_about:
-                //fragment=new AboutUsFrangment();
+            case R.id.action_cart_list:
+                Toast.makeText(HomePage.this,"my cart list",Toast.LENGTH_LONG).show();
                 break;
 
+
         }
-//        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
         return true;
     }
 
+    private void showPopUp(View view)
+    {
+        PopupMenu popupMenu=new PopupMenu(this,view);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.popup_menu);
+        popupMenu.show();
+    }
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        fragmentManager=getSupportFragmentManager();
-        fragmentTransaction=fragmentManager.beginTransaction();
-        fragment=new SellerFragment();
-        switch (menuItem.getItemId())
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId())
         {
-            case R.id.nav_clothes:
-                bundle.putString(Prevlent.catagory,Prevlent.CLOTHES);
-                fragment.setArguments(bundle);
+            case R.id.as_visiter:
+                Toast.makeText(HomePage.this,"you are already a vister",Toast.LENGTH_LONG).show();
                 break;
-            case R.id.nav_general_store:
-                bundle.putString(Prevlent.catagory,Prevlent.GENERAL_STORE);
-                fragment.setArguments(bundle);
+            case R.id.as_a_seller:
+                Fragment fragment=new BecomeSellerFragment();
+                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment,fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
                 break;
-            case R.id.nav_medical_store:
-                bundle.putString(Prevlent.catagory,Prevlent.MEDICAL_STORE);
-                fragment.setArguments(bundle);
-                break;
-            case R.id.nav_taksi:
-               // fragment=new TaksiFragment();
-                break;
-            case R.id.nav_tent:
-                //fragment=new TentFragment();
-                break;
-            case R.id.nav_raj_mistri:
-               // fragment=new RajmistryFragment();
-                break;
-            case R.id.nav_bus:
-                Toast.makeText(HomePage.this,"bus",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.nav_train:
-                Toast.makeText(HomePage.this,"train",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.nav_logout:
-                sp.edit().clear().apply();
+            case R.id.logout:
+                mAuth.signOut();
                 Intent intent=new Intent(HomePage.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-
                 break;
-
         }
-        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-        drawer.closeDrawers();
         return true;
     }
+
+
+
 }

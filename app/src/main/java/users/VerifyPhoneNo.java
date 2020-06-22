@@ -113,7 +113,7 @@ public class VerifyPhoneNo extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    final User user=new User(name,phoneNo,password);
+                    final User user=new User();
                     HashMap<String,Object>hashMap=new HashMap<>();
                     hashMap.put("name",name);
                     hashMap.put("phone",phoneNo);

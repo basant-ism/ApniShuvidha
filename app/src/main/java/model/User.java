@@ -2,38 +2,72 @@ package model;
 
 public class User
 {
-    private String name,phone,password;
+    private String userName,userPhone, userCity,userCountry,userEmail,userState,userUid,userImage;
 
     public User() {
     }
 
-    public User(String name, String phone, String password) {
-        this.name = name;
-        this.phone = phone;
-        this.password = password;
+    public String getUserImage() {
+        return userImage;
     }
 
-    public String getName() {
-        return name;
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public void setUserCountry(String userCountry) {
+        this.userCountry = userCountry;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserState() {
+        return userState;
+    }
+
+    public void setUserState(String userState) {
+        this.userState = userState;
+    }
+
+    public String getUserUid() {
+        return userUid;
+    }
+
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
     }
 }

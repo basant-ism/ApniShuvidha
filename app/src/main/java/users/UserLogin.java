@@ -72,9 +72,9 @@ public class UserLogin extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.child(phone).exists()) {
                         User user = dataSnapshot.child(phone).getValue(User.class);
-                        if (password.equals(user.getPassword())) {
+                        if (password.equals("")) {
                             sp.edit().putBoolean("logged",true).apply();
-                            sp.edit().putString("name",user.getName()).apply();
+                            sp.edit().putString("name",user.getUserName()).apply();
                             sp.edit().putString("phone",phone).apply();
                             sp.edit().putString("password",password).apply();
                             Prevlent.currentUser=user;
