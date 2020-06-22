@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/background2"
+    tools:context="seller.SellerCatagroy">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_scrollFlags="scroll"
+            android:background="#ffffff">
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                app:sliderStartAutoCycle="true" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         app:layout_anchor="@id/app_bar"
+        android:layout_alignParentStart="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+<!--        android:scrollbars="vertical"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+

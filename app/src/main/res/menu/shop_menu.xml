@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_search"
+        android:title="Search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/search"/>
+    <item
+        android:id="@+id/nav_about"
+        android:title="About Seller"
+        />
+    <item
+        android:id="@+id/nav_send_email"
+        android:title="Send mail"
+        />
+
+</menu>

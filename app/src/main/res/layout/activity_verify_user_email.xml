@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background2"
+    android:layout_height="match_parent"
+    tools:context="users.VerifyUserEmail">
+<TextView
+    android:id="@+id/tv_verification_line"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="30dp"
+    android:text="Verify your email address before login"
+    android:textColor="@color/lightGreen"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_verification_line2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_verification_line"
+        android:layout_marginTop="30dp"
+        android:text="A verifiaction link send to your email"
+        android:textColor="@color/lightGreen"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_resend_link"
+        android:layout_below="@+id/tv_verification_line2"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="resend link"
+        android:textSize="20sp"
+        android:onClick="resendLink"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/buttons"
+        />
+    <TextView
+        android:id="@+id/tv_already_verified"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_resend_link"
+        android:layout_marginTop="5dp"
+        android:text="Already verified?...login here"
+        android:textColor="@color/lightGreen"
+        android:textSize="18dp"
+        android:onClick="goToLoginActivity"
+        android:textStyle="italic"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

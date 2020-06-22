@@ -1,0 +1,112 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="users.frangment.ShopFragment">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll"
+            android:background="@color/darkWhite">
+            <ImageView
+                android:id="@+id/img_shop_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:paddingTop="5dp"
+                android:src="@drawable/profile"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/img_star"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/img_shop_fragment"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/star"
+                android:layout_marginTop="-50dp"/>
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_shop_fragment"
+                android:layout_marginEnd="0dp"
+                android:layout_toStartOf="@+id/img_star"
+                android:layout_marginTop="-50dp"
+                android:text="5"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/tv_seller_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/golden"
+                android:layout_below="@+id/img_shop_fragment"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="-30dp"
+                android:text="seller name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_rate_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_shop_fragment"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
+                android:text="Rate now:"
+                android:textSize="30sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_shop_fragment"
+                android:layout_marginStart="0dp"
+                android:stepSize=".5"
+                android:progressTint="@color/golden"
+                android:layout_toEndOf="@+id/tv_rate_now" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/type_wise_recycler_view"
+                android:layout_width="match_parent"
+                 android:layout_below="@id/ratingBar"
+                android:layout_height="wrap_content"
+                 android:scrollbars="vertical"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/tv_all_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Products"
+                android:textSize="25sp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_below="@id/type_wise_recycler_view"/>
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_anchor="@id/app_bar"
+        android:id="@+id/all_product_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

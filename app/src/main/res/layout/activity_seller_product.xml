@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="users.SellerProduct">
+
+    <com.google.android.material.appbar.AppBarLayout
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll">
+
+
+            <ImageView
+                android:id="@+id/img_shop"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/adv1" />
+            <LinearLayout
+                android:id="@+id/linear_layout0"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="170dp"
+                >
+                <TextView
+                    android:id="@+id/tv_shop_status"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:text="shop open"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:id="@+id/img_shop_status"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/open"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/img_shop"
+                android:background="@color/white"
+                >
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:onClick="sendEmail"
+                android:layout_below="@+id/linear_layout1"
+                android:background="@color/lightGreen"
+                >
+                <ImageView
+
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/email"/>
+                <TextView
+                    android:id="@+id/tv_seller_email"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:text="email@gmail.com"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout3"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:onClick="makeACall"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear_layout2"
+                android:background="@color/lightGreen"
+                >
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/call"/>
+                <TextView
+                    android:id="@+id/tv_seller_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="9027385406"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout4"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear_layout3"
+                android:background="@color/lightGreen"
+                android:onClick="openMap"
+                >
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/home"/>
+                <TextView
+                    android:id="@+id/tv_shop_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="address"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_shop_des"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/linear_layout4"
+                android:gravity="center_horizontal"
+                android:text="description"
+                android:textStyle="italic"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_products"
+                android:text="Products->"
+                android:textSize="20sp"
+                android:layout_below="@+id/tv_shop_des"
+                android:paddingTop="5dp"
+                android:textStyle="italic"
+                android:paddingBottom="5dp"
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationFragment">
+
+
+         <TextView
+             android:id="@+id/tv_line"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:padding="5dp"
+             android:textSize="20sp"
+             android:textStyle="italic"
+             android:gravity="center_horizontal"
+             android:layout_marginTop="10dp"
+             android:layout_centerHorizontal="true"
+             android:layout_alignParentTop="true"
+             android:text="Would you like get notification from ApniShuvidha?"
+             />
+
+      <androidx.appcompat.widget.SwitchCompat
+          android:layout_marginTop="10dp"
+          android:id="@+id/switch_yes"
+          android:layout_width="wrap_content"
+          android:text="Yes/No"
+          android:textSize="20sp"
+          android:layout_centerHorizontal="true"
+          android:layout_below="@+id/tv_line"
+          android:textStyle="bold"
+          android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

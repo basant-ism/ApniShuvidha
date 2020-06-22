@@ -1,0 +1,31 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="users.frangment.ProductFragment">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:textStyle="bold"
+            android:text="All Products"
+            android:textSize="20sp"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_view"
+    app:layout_anchor="@id/app_bar"
+    android:layout_marginTop="5dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
